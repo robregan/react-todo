@@ -16,10 +16,15 @@ class App extends React.Component {
         this.setState(prevState => {
             const updatedTodos = prevState.todos.map(todo => {
                 if (todo.id === id) {
-                    todo.completed = !todo.completed
+                   return {
+                     ...todo,
+                     completed: !todo.completed // here we are returning a new object with the spread operator so we dont modify the original state
+                   }
                 }
                 return todo
             })
+            console.log(prevState.todos)
+            console.log(updatedTodos)
             return {
                 todos: updatedTodos
             }
